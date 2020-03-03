@@ -1,0 +1,6 @@
+D:\A_cos\Acomputer netword\vs\E2_3181\src\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe.config
+D:\A_cos\Acomputer netword\vs\E2_3181\src\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
+D:\A_cos\Acomputer netword\vs\E2_3181\src\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
+D:\A_cos\Acomputer netword\vs\E2_3181\src\ConsoleApplication3\obj\Debug\ConsoleApplication3.csprojResolveAssemblyReference.cache
+D:\A_cos\Acomputer netword\vs\E2_3181\src\ConsoleApplication3\obj\Debug\ConsoleApplication3.exe
+D:\A_cos\Acomputer netword\vs\E2_3181\src\ConsoleApplication3\obj\Debug\ConsoleApplication3.pdb
