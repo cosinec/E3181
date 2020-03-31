@@ -235,23 +235,61 @@ void output(ip_header * ih, mac_header* mh, const struct pcap_pkthdr *header, ch
 	/*
 	输出到文件
 	*/
-	
-	FILE *fp = fopen("out.txt", "a");
-	fprintf(fp, "FTP:%d.%d.%d.%d",
+	FILE* fp = fopen("AnalyseFTPPacket-log.csv", "a+");
+	fprintf(fp, "%s,", timestr);//时间
+
+	fprintf(fp, "%02X-%02X-%02X-%02X-%02X-%02X,",
+		mh->dest_addr[0],
+		mh->dest_addr[1],
+		mh->dest_addr[2],
+		mh->dest_addr[3],
+		mh->dest_addr[4],
+		mh->dest_addr[5]);//客户机地址
+	fprintf(fp, "%d.%d.%d.%d,",
+		ih->daddr[0],
+		ih->daddr[1],
+		ih->daddr[2],
+		ih->daddr[3]);//客户机IP
+
+	fprintf(fp, "%02X-%02X-%02X-%02X-%02X-%02X,",
+		mh->src_addr[0],
+		mh->src_addr[1],
+		mh->src_addr[2],
+		mh->src_addr[3],
+		mh->src_addr[4],
+		mh->src_addr[5]);//FTP服务器MAC
+	fprintf(fp, "%d.%d.%d.%d,",
 		ih->saddr[0],
 		ih->saddr[1],
 		ih->saddr[2],
 		ih->saddr[3]);//FTP服务器IP
 
-	fprintf(fp, "\tUSR:%s\tPAS:%s\t", user, pass);//账号密码
+	fprintf(fp, "%s,%s,", user, pass);//账号密码
 
 	if (isSucceed) {
-		fprintf(fp, "STA:OK\n");
+		fprintf(fp, "SUCCEED\n");
 	}
 	else {
-		fprintf(fp, "STA:FALED\n");
+		fprintf(fp, "FAILED\n");
 	}
 	fclose(fp);
+	//out.txt
+	FILE *ff = fopen("out.txt", "a");
+	fprintf(ff, "FTP:%d.%d.%d.%d",
+		ih->saddr[0],
+		ih->saddr[1],
+		ih->saddr[2],
+		ih->saddr[3]);//FTP服务器IP
+
+	fprintf(ff, "\tUSR:%s\tPAS:%s\t", user, pass);//账号密码
+
+	if (isSucceed) {
+		fprintf(ff, "STA:OK\n");
+	}
+	else {
+		fprintf(ff, "STA:FALED\n");
+	}
+	fclose(ff);
 
 	user[0] = '\0';
 }
