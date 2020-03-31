@@ -1,0 +1,25 @@
+﻿生成启动时间为 2020-03-31 18:59:13。
+     1>项目“D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\UDPdump\UDPdump.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\璇学习\VC\bin\CL.exe /c /I..\..\include /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\\Debug\x86\\" /Fd"D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\\Debug\x86\vc140.pdb" /Gd /TC /analyze- /errorReport:prompt UDPdump.c
+         UDPdump.c
+     1>d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(121): warning C4473: “fprintf”: 没有为格式字符串传递足够的参数
+         d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(121): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
+         d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(121): note: the missing variadic argument 1 is required by format string '%s'
+     1>d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(178): warning C4459: “user”的声明隐藏了全局声明
+         d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(14): note: 参见“user”的声明
+     1>d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(178): warning C4459: “pass”的声明隐藏了全局声明
+         d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(15): note: 参见“pass”的声明
+     1>d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(273): warning C4456: “i”的声明隐藏了上一个本地声明
+         d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(264): note: 参见“i”的声明
+     1>d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(260): warning C4100: “param”: 未引用的形参
+     1>d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(266): warning C4189: “length”: 局部变量已初始化但不引用
+     1>d:\a_cos\acomputer netword\实验\e3181\e4_3181\src\pcap\udpdump\udpdump.c(264): warning C4189: “i”: 局部变量已初始化但不引用
+       Link:
+         D:\璇学习\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\\Debug\x86\UDPdump.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\..\lib wpcap.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\\Debug\x86\UDPdump.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\\Debug\x86\UDPdump.lib" /MACHINE:X86 /SAFESEH "D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\\Debug\x86\UDPdump.obj"
+         UDPdump.vcxproj -> D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\\Debug\x86\UDPdump.exe
+     1>已完成生成项目“D:\A_cos\Acomputer netword\实验\E3181\E4_3181\src\pcap\UDPdump\UDPdump.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:01.40

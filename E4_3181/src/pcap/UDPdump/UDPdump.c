@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define HAVE_REMOTE
+
 #include <pcap.h>
 #include <Packet32.h>
 #include <ntddndis.h>
@@ -12,7 +13,7 @@
 
 u_char user[20];//用户名
 u_char pass[20];//密码
-				//TCP首部
+
 typedef struct tcp_header
 {
 	u_short sport;//源程序的端口号
@@ -52,6 +53,8 @@ void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_cha
 
 int main()
 {
+	FILE* fp = fopen("out.txt", "w");
+	fclose(fp);
 	pcap_if_t *alldevs;
 	pcap_if_t *d;
 	int inum;
@@ -232,42 +235,21 @@ void output(ip_header * ih, mac_header* mh, const struct pcap_pkthdr *header, ch
 	/*
 	输出到文件
 	*/
-	FILE* fp = fopen("AnalyseFTPPacket-log.csv", "a+");
-	fprintf(fp, "%s,", timestr);//时间
-
-	fprintf(fp, "%02X-%02X-%02X-%02X-%02X-%02X,",
-		mh->dest_addr[0],
-		mh->dest_addr[1],
-		mh->dest_addr[2],
-		mh->dest_addr[3],
-		mh->dest_addr[4],
-		mh->dest_addr[5]);//客户机地址
-	fprintf(fp, "%d.%d.%d.%d,",
-		ih->daddr[0],
-		ih->daddr[1],
-		ih->daddr[2],
-		ih->daddr[3]);//客户机IP
-
-	fprintf(fp, "%02X-%02X-%02X-%02X-%02X-%02X,",
-		mh->src_addr[0],
-		mh->src_addr[1],
-		mh->src_addr[2],
-		mh->src_addr[3],
-		mh->src_addr[4],
-		mh->src_addr[5]);//FTP服务器MAC
-	fprintf(fp, "%d.%d.%d.%d,",
+	
+	FILE *fp = fopen("out.txt", "a");
+	fprintf(fp, "FTP:%d.%d.%d.%d",
 		ih->saddr[0],
 		ih->saddr[1],
 		ih->saddr[2],
 		ih->saddr[3]);//FTP服务器IP
 
-	fprintf(fp, "%s,%s,", user, pass);//账号密码
+	fprintf(fp, "\tUSR:%s\tPAS:%s\t", user, pass);//账号密码
 
 	if (isSucceed) {
-		fprintf(fp, "SUCCEED\n");
+		fprintf(fp, "STA:OK\n");
 	}
 	else {
-		fprintf(fp, "FAILED\n");
+		fprintf(fp, "STA:FALED\n");
 	}
 	fclose(fp);
 
@@ -289,6 +271,7 @@ void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_cha
 	int pass_point = 0;
 	int tmp;
 	for (int i = 0; i<ih->tlen - 40; i++) {
+		/* 用户名标志USER */
 		if (*(pkt_data + i) == 'U'&&*(pkt_data + i + 1) == 'S'&&*(pkt_data + i + 2) == 'E'&&*(pkt_data + i + 3) == 'R') {
 			name_point = i + 5;//'u' 's' 'e' 'r' ' '共5个字节,跳转至用户名第一个字节
 
@@ -303,7 +286,7 @@ void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_cha
 			break;
 
 		}
-
+		/* 密码标志PASS */
 		if (*(pkt_data + i) == 'P' && *(pkt_data + i + 1) == 'A' && *(pkt_data + i + 2) == 'S' && *(pkt_data + i + 3) == 'S') {
 			pass_point = i + 5;////'P' 'A' 'S' 'S' ' '共5个字节,跳转至密码第一个字节
 			tmp = pass_point;
